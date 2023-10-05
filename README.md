@@ -19,19 +19,42 @@ Body:
 
 ```
 [
-{
-"id": 1,
-"name": "Task 1",
-"description": "Description of task 1",
-"due_date": "2022-01-01"
-},
-{
-"id": 2,
-"name": "Task 2",
-"description": "Description of task 2",
-"due_date": "2022-02-01"
-}
-...
+  {
+    "id": 1,
+    "name": "Create project proposal",
+    "description": "Write a proposal for the new project",
+    "due_date": "2022-02-01"
+  },
+  {
+    "id": 2,
+    "name": "Design website layout",
+    "description": "Create a layout for the company website",
+    "due_date": "2022-03-01"
+  },
+  {
+    "id": 3,
+    "name": "Implement payment system",
+    "description": "Integrate a payment system into the website",
+    "due_date": "2022-04-01"
+  },
+  {
+    "id": 4,
+    "name": "Conduct user testing",
+    "description": "Gather feedback from user testing to improve the website",
+    "due_date": "2022-05-01"
+  },
+  {
+    "id": 5,
+    "name": "Launch website",
+    "description": "Make the website live for the public",
+    "due_date": "2022-06-01"
+  },
+  {
+    "id": 6,
+    "name": "Evaluate website performance",
+    "description": "Collect data and analyse websit performance",
+    "due_date": "2022-07-01"
+  }
 ]
 ```
 
@@ -51,10 +74,10 @@ Body:
 
 ```
 {
-"id": 1,
-"name": "Task 1",
-"description": "Description of task 1",
-"due_date": "2022-01-01"
+  "id": 1,
+  "name": "Create project proposal",
+  "description": "Write a proposal for the new project",
+  "due_date": "2022-02-01"
 }
 ```
 
@@ -94,9 +117,9 @@ Method: `POST`
 
 ```
 {
-"name": "Task 3",
-"description": "Description of task 3",
-"due_date": "2022-03-01"
+  "name": "Test task",
+  "description": "This is a test task",
+  "due_date": "2022-01-01"
 }
 ```
 
@@ -104,15 +127,23 @@ Method: `POST`
 
 - Status code: `201 Created`
 
+Example: `localhost:10000/task`
+
 Body:
 
 ```
 {
-"id": 3,
-"name": "Task 3",
-"description": "Description of task 3",
-"due_date": "2022-03-01"
+  "id": 7,
+  "name": "Test task",
+  "description": "This is a test task",
+  "due_date": "2022-01-01"
 }
+```
+
+**Request Body:**
+
+```
+
 ```
 
 **Error:**
@@ -133,15 +164,15 @@ URL: `/task/{id}`
 
 Method: `PUT`
 
-Example: `localhost:10000/task/3`
+Example: `localhost:10000/task/2`
 
 **Request Body:**
 
 ```
 {
-"name": "Updated Task 3",
-"description": "Updated description of task 3",
-"due_date": "2022-03-15"
+  "name": "Collect requirements",
+  "description": "Conduct research and gather input from stakeholders",
+  "due_date": "2022-02-01"
 }
 ```
 
@@ -149,14 +180,16 @@ Example: `localhost:10000/task/3`
 
 - Status code:`200 OK`
 
+Example: `localhost:10000/task/2`
+
 Body:
 
 ```
 {
-"id": 3,
-"name": "Updated Task 3",
-"description": "Updated description of task 3",
-"due_date": "2022-03-15"
+"id": 2,
+"name": "Collect requirements",
+"description": "Conduct research and gather input from stakeholders",
+"due_date": "2022-02-01"
 }
 ```
 
@@ -164,7 +197,7 @@ Body:
 
 - Status code: `400 Bad Request`
 
-Example: `localhost:10000/task/ids`
+Example: `localhost:10000/task/abc`
 
 Body:
 
@@ -174,13 +207,21 @@ Body:
 }
 ```
 
-- Status code: `404 Not Found`
+- Status code: `400 Bad Request`
+
+Example: `localhost:10000/task/1`
+
+**Request Body:**
+
+```
+
+```
 
 Body:
 
 ```
 {
-  "error": "task not found"
+  "error": "Invalid task payload"
 }
 ```
 
@@ -194,6 +235,8 @@ Method: `DELETE`
 
 - Status code: `200 OK`
 
+Example: `localhost:10000/task/3`
+
 Body:
 
 ```
@@ -202,19 +245,9 @@ Body:
 }
 ```
 
-- Status code:  `400 Bad Request`
-
-Example: `localhost:10000/task/ids`
-
-Body:
-
-```
-{
-  "error": "invalid task ID"
-}
-```
-
 - Status code: `404 Not Found`
+
+Example: `localhost:10000/task/10`
 
 Body:
 
